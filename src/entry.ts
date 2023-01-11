@@ -9,5 +9,4 @@ export default {
       app.component(FButton.name, FButton);
       app.component(JSXButton.name, JSXButton);
     },
-  
   };
