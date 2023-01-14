@@ -1,3 +1,4 @@
+import App from './App.vue'
 import {createApp} from 'vue'
-import JSXButton from './button/JSXButton';
-createApp(JSXButton).mount("#app");
+const app = createApp(App)
+app.mount('#app')
