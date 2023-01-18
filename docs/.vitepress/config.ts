@@ -7,7 +7,7 @@ const sidebar = {
           { text: 'Button 按钮', link: '/components/button/' },
         ]
       },
-      { text: '导航' },
+      { text: '' },
       { text: '反馈' },
       { text: '数据录入' },
       { text: '数据展示' },
