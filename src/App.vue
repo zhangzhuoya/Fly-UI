@@ -4,9 +4,9 @@
   <FlyButton theme="link">link</FlyButton>
   <FlyButton theme="text">text</FlyButton>
   <FlyButton theme="danger">danger</FlyButton>
-  <FlyButton theme="text">text</FlyButton>
+  <FlyButton theme="text" @click="closeDialog">11</FlyButton>
   <FlyButton theme="text" :isLoading="true">text</FlyButton>
-  <FlyDialog></FlyDialog>
+  <FlyDialog :visiable="vis"></FlyDialog>
 </template>
 
 <script lang="ts">
@@ -23,8 +23,14 @@ export default {
   },
   setup() {
     const value = ref(true);
+    let vis = ref(false);
+    const closeDialog = () => {
+      vis.value = !vis.value;
+    };
     return {
       value,
+      vis,
+      closeDialog,
     };
   },
 };
