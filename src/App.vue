@@ -6,7 +6,7 @@
   <FlyButton theme="danger">danger</FlyButton>
   <FlyButton theme="text" @click="closeDialog">11</FlyButton>
   <FlyButton theme="text" :isLoading="true">text</FlyButton>
-  <FlyDialog :visiable="vis"></FlyDialog>
+  <FlyDialog v-model:visiable="vis"></FlyDialog>
 </template>
 
 <script lang="ts">

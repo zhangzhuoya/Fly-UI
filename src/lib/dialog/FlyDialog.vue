@@ -3,14 +3,14 @@
         <div class="fly-dialog-overlay"></div>
         <div class="fly-dialog-wrapper">
             <div class="fly-dialog">
-            <header>标题 <span class="fly-dialog-close"></span></header>
+            <header>标题 <span class="fly-dialog-close" @click="closeDialog"></span></header>
             <main>
                 <p>第一行字</p>
                 <p>第二行字</p>
             </main>
             <footer>
-                <Button level="main">OK</Button>
-                <Button>Cancel</Button>
+                <Button level="main" @click="okCloseDialog">OK</Button>
+                <Button @click="cancelCloseDialog">Cancel</Button>
             </footer>
         </div>
         </div>
@@ -26,6 +26,21 @@ export default {
         visiable: {
             type: Boolean
         }
+    },
+    setup(props,context) {
+        const okCloseDialog = ()=>{
+            context.emit('update:visiable', false);
+        }
+        const cancelCloseDialog = ()=>{
+            context.emit('update:visiable', !props.visiable);
+        }
+        const closeDialog = ()=>{
+            context.emit('update:visiable', !props.visiable);
+        }
+        return {
+            okCloseDialog,cancelCloseDialog,closeDialog
+        }
+
     }
 };
 </script>
