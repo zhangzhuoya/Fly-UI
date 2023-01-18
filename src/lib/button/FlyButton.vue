@@ -1,5 +1,5 @@
 <template>
-  <button class="fly-button" :class="classes"><slot></slot></button>
+  <button class="fly-button" :class="classes"><span class="fly-loadingIndicator" v-show="isLoading"></span><slot></slot></button>
 </template>
 
 <script lang="ts">
@@ -10,6 +10,9 @@ export default {
     theme: {
       type: String,
       default: ''
+    },
+    isLoading: {
+      type: Boolean
     }
   },
 setup(props) {

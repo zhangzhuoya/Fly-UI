@@ -5,6 +5,7 @@
   <FlyButton theme="text">text</FlyButton>
   <FlyButton theme="danger">danger</FlyButton>
   <FlyButton theme="text">text</FlyButton>
+  <FlyButton theme="text" :isLoading="true">text</FlyButton>
 </template>
 
 <script lang="ts">
