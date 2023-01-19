@@ -1,12 +1,12 @@
 <template>
     <template v-if="visiable">
-        <div class="fly-dialog-overlay"></div>
+      <Teleport to="body">
+        <div class="fly-dialog-overlay" @click="clickOverlay"></div>
         <div class="fly-dialog-wrapper">
             <div class="fly-dialog">
-            <header>标题 <span class="fly-dialog-close" @click="closeDialog"></span></header>
+            <header><slot name="title"></slot> <span class="fly-dialog-close" @click="closeDialog"></span></header>
             <main>
-                <p>第一行字</p>
-                <p>第二行字</p>
+                <slot name="content"></slot>
             </main>
             <footer>
                 <Button level="main" @click="okCloseDialog">OK</Button>
@@ -14,6 +14,7 @@
             </footer>
         </div>
         </div>
+      </Teleport>
     </template>
 </template>
 <script lang="ts">
@@ -31,6 +32,10 @@ export default {
         },
         cancel: {
             type: Function
+        },
+        closeOverlay: {
+            type: Boolean,
+            default: true,
         }
     },
     setup(props,context) {
@@ -47,8 +52,13 @@ export default {
                 context.emit('update:visiable', !props.visiable);
             }
         }
+        const clickOverlay = ()=>{
+            if(props.closeOverlay) {
+                context.emit('update:visiable', false);
+            }
+        }
         return {
-            okCloseDialog,cancelCloseDialog,closeDialog
+            okCloseDialog,cancelCloseDialog,closeDialog,clickOverlay
         }
 
     }

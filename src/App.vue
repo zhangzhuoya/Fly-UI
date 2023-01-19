@@ -6,7 +6,19 @@
   <FlyButton theme="danger">danger</FlyButton>
   <FlyButton theme="text" @click="closeDialog">11</FlyButton>
   <FlyButton theme="text" :isLoading="true">text</FlyButton>
-  <FlyDialog v-model:visiable="vis" :ok="ok" :cancel="cancel"></FlyDialog>
+  <FlyDialog
+    v-model:visiable="vis"
+    :ok="ok"
+    :cancel="cancel"
+    :closeOverlay="true"
+  >
+    <template v-slot:title>
+      <strong> 标题 </strong>
+    </template>
+    <template v-slot:content>
+      <strong> 这是内容 </strong>
+    </template>
+  </FlyDialog>
 </template>
 
 <script lang="ts">
