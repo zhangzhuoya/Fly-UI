@@ -1,6 +1,6 @@
 <template>
     <template v-if="visiable">
-        <div class="fly-dialog-overlay"></div>
+        <div class="fly-dialog-overlay" @click="clickOverlay"></div>
         <div class="fly-dialog-wrapper">
             <div class="fly-dialog">
             <header>标题 <span class="fly-dialog-close" @click="closeDialog"></span></header>
@@ -31,6 +31,10 @@ export default {
         },
         cancel: {
             type: Function
+        },
+        closeOverlay: {
+            type: Boolean,
+            default: true,
         }
     },
     setup(props,context) {
@@ -47,8 +51,13 @@ export default {
                 context.emit('update:visiable', !props.visiable);
             }
         }
+        const clickOverlay = ()=>{
+            if(props.closeOverlay) {
+                context.emit('update:visiable', false);
+            }
+        }
         return {
-            okCloseDialog,cancelCloseDialog,closeDialog
+            okCloseDialog,cancelCloseDialog,closeDialog,clickOverlay
         }
 
     }
