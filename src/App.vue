@@ -11,7 +11,14 @@
     :ok="ok"
     :cancel="cancel"
     :closeOverlay="true"
-  ></FlyDialog>
+  >
+    <template v-slot:title>
+      <strong> 标题 </strong>
+    </template>
+    <template v-slot:content>
+      <strong> 这是内容 </strong>
+    </template>
+  </FlyDialog>
 </template>
 
 <script lang="ts">

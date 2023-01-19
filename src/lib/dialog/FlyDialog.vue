@@ -3,10 +3,9 @@
         <div class="fly-dialog-overlay" @click="clickOverlay"></div>
         <div class="fly-dialog-wrapper">
             <div class="fly-dialog">
-            <header>标题 <span class="fly-dialog-close" @click="closeDialog"></span></header>
+            <header><slot name="title"></slot> <span class="fly-dialog-close" @click="closeDialog"></span></header>
             <main>
-                <p>第一行字</p>
-                <p>第二行字</p>
+                <slot name="content"></slot>
             </main>
             <footer>
                 <Button level="main" @click="okCloseDialog">OK</Button>
