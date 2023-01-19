@@ -25,6 +25,12 @@ export default {
     props: {
         visiable: {
             type: Boolean
+        },
+        ok: {
+            type: Function
+        },
+        cancel: {
+            type: Function
         }
     },
     setup(props,context) {
@@ -32,10 +38,14 @@ export default {
             context.emit('update:visiable', false);
         }
         const cancelCloseDialog = ()=>{
-            context.emit('update:visiable', !props.visiable);
+            if(props?.cancel()) {
+                context.emit('update:visiable', !props.visiable);
+            }
         }
         const closeDialog = ()=>{
-            context.emit('update:visiable', !props.visiable);
+            if(props?.ok()) {
+                context.emit('update:visiable', !props.visiable);
+            }
         }
         return {
             okCloseDialog,cancelCloseDialog,closeDialog
