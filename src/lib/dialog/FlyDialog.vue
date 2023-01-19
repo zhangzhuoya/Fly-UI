@@ -1,5 +1,6 @@
 <template>
     <template v-if="visiable">
+      <Teleport to="body">
         <div class="fly-dialog-overlay" @click="clickOverlay"></div>
         <div class="fly-dialog-wrapper">
             <div class="fly-dialog">
@@ -13,6 +14,7 @@
             </footer>
         </div>
         </div>
+      </Teleport>
     </template>
 </template>
 <script lang="ts">
