@@ -6,7 +6,7 @@
   <FlyButton theme="danger">danger</FlyButton>
   <FlyButton theme="text" @click="closeDialog">11</FlyButton>
   <FlyButton theme="text" :isLoading="true">text</FlyButton>
-  <FlyDialog v-model:visiable="vis"></FlyDialog>
+  <FlyDialog v-model:visiable="vis" :ok="ok" :cancel="cancel"></FlyDialog>
 </template>
 
 <script lang="ts">
@@ -24,6 +24,12 @@ export default {
   setup() {
     const value = ref(true);
     let vis = ref(false);
+    const ok = () => {
+      return true;
+    };
+    const cancel = () => {
+      return false;
+    };
     const closeDialog = () => {
       vis.value = !vis.value;
     };
@@ -31,6 +37,8 @@ export default {
       value,
       vis,
       closeDialog,
+      ok,
+      cancel,
     };
   },
 };
