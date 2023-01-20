@@ -4,7 +4,7 @@
   <FlyButton theme="link">link</FlyButton>
   <FlyButton theme="text">text</FlyButton>
   <FlyButton theme="danger">danger</FlyButton>
-  <FlyButton theme="text" @click="closeDialog">11</FlyButton>
+  <FlyButton theme="text" @click="showDialog">11</FlyButton>
   <FlyButton theme="text" :isLoading="true">text</FlyButton>
   <FlyDialog
     v-model:visiable="vis"
@@ -22,10 +22,11 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, h } from "vue";
 import FlySwitch from "./lib/switch/FlySwitch.vue";
 import FlyButton from "./lib/button/FlyButton.vue";
 import FlyDialog from "./lib/dialog/FlyDialog.vue";
+import { openDialog } from "./lib/dialog/dialog";
 export default {
   name: "App",
   components: {
@@ -45,12 +46,25 @@ export default {
     const closeDialog = () => {
       vis.value = !vis.value;
     };
+    const showDialog = () => {
+      openDialog({
+        title: h("strong", {}, "标题"),
+        content: "你好",
+        ok() {
+          console.log("ok");
+        },
+        cancel() {
+          console.log("cancel");
+        },
+      });
+    };
     return {
       value,
       vis,
       closeDialog,
       ok,
       cancel,
+      showDialog,
     };
   },
 };
